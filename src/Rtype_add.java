@@ -16,11 +16,10 @@ public class Rtype_add {
     public void simulate(){
 
         /*
-         * Add instruction
-         * บวกค่าใน regA ด้วยค่าใน regB และเอาไปเก็บใน destReg
+         * nana instruction
+         * Nand ค่าใน regA ด้วยค่าใน regB และเอาค่าไปเก็บใน destReg
          */
-        s.reg[destReg] = s.reg[regA] + s.reg[regB];
-        s.pc++;
+        
     }
 
 
