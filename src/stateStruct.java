@@ -11,6 +11,8 @@ public class stateStruct {
     int[] mem = new int[65536];
     int[] reg = new int[8];
     int numMemory;
+      // สร้าง list ของ inst ไว้ ตอนสุดท้ายก็ลูปละวนให้ simulate ทีเดียว (ยังไม่ได้เขียน)
+    Queue<Object> instQueue = new LinkedList<Object>();
 
     /*กำหนดค่า state เริ่มต้น 
      * set pc = 0
@@ -29,7 +31,6 @@ public class stateStruct {
               String data = myReader.nextLine();
               mem[numMemory] = Integer.parseInt(data);
               System.out.println("memory["+numMemory+"]="+mem[numMemory]);
-              splitOpcode(mem[numMemory]);
               numMemory++;
             }
             myReader.close();
@@ -46,6 +47,8 @@ public class stateStruct {
         //test เฉยๆ
         reg[1] = 2;
         reg[2] = 5;
+
+        simulate();
     }
 
     public void printState(){
@@ -65,20 +68,13 @@ public class stateStruct {
         System.out.println("endstate\n");
     }
 
-    // เอา mem ไปแปลใน opcode splitor ทีละอัน
-    public int[] staticMem(){
-        return mem.length>0 ? mem : null;
-    }
-
     public void splitOpcode(int opcode){
 
         // แปลง opcode base 10 > base 2
         String opcodeString = Integer.toBinaryString(opcode);
         //System.out.println("opcode = " + opcode);
         System.out.println("opcode = " + opcodeString + " #bits = " + opcodeString.length());
-
-        // สร้าง list ของ inst ไว้ ตอนสุดท้ายก็ลูปละวนให้ simulate ทีเดียว (ยังไม่ได้เขียน)
-        Queue<Object> instQueue = new LinkedList<Object>();
+        
 
         // ต้องมี 25 ตัว คือ bit ที่ 24-0 ถ้าไม่ถึงให้เติม 0 ข้างหน้าให้ครบ
         if(opcodeString.length() < 25){
@@ -147,6 +143,11 @@ public class stateStruct {
                 }
             }
         }  
-        
+    }
+
+    public void simulate(){
+        for(int i = 0; i<numMemory; i++){
+            splitOpcode(mem[i]);
+        }
     }
 }

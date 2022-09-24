@@ -6,6 +6,8 @@ public class initial{
         // int counter = 0;
 
         stateStruct a = new stateStruct();
+        // System.out.println("---");
+        // a.simulate();
         // a.printState();
 
         // //Test add instruction
