@@ -7,11 +7,11 @@ public class Itype_beq {
     int regB;
     int offSet;
 
-    Itype_beq(){
-        this.s = s;
-        this.regA = regA;
-        this.regB = regB;
-        this.offSet = offSet;
+    Itype_beq(String opcodeBits){
+        // this.s = s;
+        // this.regA = regA;
+        // this.regB = regB;
+        // this.offSet = offSet;
     }
 
     public void simulate(){

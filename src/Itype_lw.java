@@ -7,11 +7,11 @@ public class Itype_lw {
     int regB;
     int offSet;
 
-    Itype_lw(){
-        this.s = s;
-        this.regA = regA;
-        this.regB = regB;
-        this.offSet = offSet;
+    Itype_lw(String opcodeBits){
+        // this.s = s;
+        // this.regA = regA;
+        // this.regB = regB;
+        // this.offSet = offSet;
     }
 
     public void simulate(){

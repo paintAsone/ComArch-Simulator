@@ -6,11 +6,11 @@ public class Rtype_nand {
     int regB;
     int destReg;
 
-    Rtype_nand(stateStruct s, byte regA, byte regB, byte destReg){
-        this.s = s;
-        this.regA = regA;
-        this.regB = regB;
-        this.destReg = destReg;
+    Rtype_nand(String opcodeBits){
+        // this.s = s;
+        // this.regA = regA;
+        // this.regB = regB;
+        // this.destReg = destReg;
     }
 
     public void simulate(){
