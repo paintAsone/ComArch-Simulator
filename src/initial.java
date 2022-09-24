@@ -5,12 +5,21 @@ public class initial{
     public static void main(String[] args){
         // int counter = 0;
 
-        stateStruct a = new stateStruct();
+        //ลูปที่คิดไว้
+        stateStruct state = new stateStruct();
+        int counter = 0;
+        boolean end = false;
+        do{
+            //ทำทีละ instruction ใน mem[pc]
+            counter++;
+        }while(!end);
+
+        
         // System.out.println("---");
         // a.simulate();
         // a.printState();
 
-        // //Test add instruction
+        //Test add instruction
         // byte rs1 = 0b001;
         // byte rs2 = 0b010;
         // byte rd = 0b011;
