@@ -7,12 +7,12 @@ public class initial{
 
         //ลูปที่คิดไว้
         stateStruct state = new stateStruct();
-        int counter = 0;
-        boolean end = false;
-        do{
-            //ทำทีละ instruction ใน mem[pc]
-            counter++;
-        // }while(!end);
+        // int counter = 0;
+        // boolean end = false;
+        // do{
+        //     //ทำทีละ instruction ใน mem[pc]
+        //     counter++;
+        // // }while(!end);
 
 
         // System.out.println("---");

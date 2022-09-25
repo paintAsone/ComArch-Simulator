@@ -95,49 +95,49 @@ public class stateStruct {
             switch (first3bits){
                 case "000": {
                     System.out.println("ADD Inst.");
-                    Rtype add = new Rtype(opcodeString,state);
+                    Rtype add = new Rtype(opcodeString,this);
                     instQueue.add(add);
                     break;
                 }
                 case "001": {
                     System.out.println("NAND Inst.");
-                    Rtype nand = new Rtype(opcodeString,state);
+                    Rtype nand = new Rtype(opcodeString,this);
                     instQueue.add(nand);
                     break;
                 }
                 case "010": {
                     System.out.println("LW Inst.");
-                    Itype lw = new Itype(opcodeString,state);
+                    Itype lw = new Itype(opcodeString,this);
                     instQueue.add(lw);
                     break;
                 }
                 case "011": {
                     System.out.println("SW Inst.");
-                    Itype sw = new Itype(opcodeString);
+                    Itype sw = new Itype(opcodeString,this);
                     instQueue.add(sw);
                     break;
                 }
                 case "100": {
                     System.out.println("BEQ Inst.");
-                    Itype beq = new Itype(opcodeString);
+                    Itype beq = new Itype(opcodeString,this);
                     instQueue.add(beq);
                     break;
                 }
                 case "101": {
                     System.out.println("JALR Inst.");
-                    jtype_jalr jalr = new jtype_jalr(opcodeString);
+                    Jtype jalr = new Jtype(opcodeString,this);
                     instQueue.add(jalr);
                     break;
                 }
                 case "110": {
                     System.out.println("HAULT Inst.");
-                    otype_hault hault = new otype_hault(opcodeString);
+                    Otype hault = new Otype(opcodeString,this);
                     instQueue.add(hault);
                     break;
                 }
                 case "111": {
                     System.out.println("NOOP Inst.");
-                    otype_noop noop = new otype_noop(opcodeString);
+                    Otype noop = new Otype(opcodeString,this);
                     instQueue.add(noop);
                     break;
                 }
