@@ -12,9 +12,9 @@ public class initial{
         do{
             //ทำทีละ instruction ใน mem[pc]
             counter++;
-        }while(!end);
+        // }while(!end);
 
-        
+
         // System.out.println("---");
         // a.simulate();
         // a.printState();
@@ -26,6 +26,22 @@ public class initial{
         // Rtype_add r = new Rtype_add(a, rs1, rs2, rd);
         // r.simulate();
         // a.printState();
+
+        // int and = 9;
+        //     String and_s1 = Integer.toBinaryString(and);
+        //     System.out.println(and_s1);
+        //     StringBuilder and_s2 = new StringBuilder(and_s1);
+        //     for(int i=0; i<and_s2.length();i++){
+        //         if(and_s2.charAt(i) == '0'){
+        //             and_s2.setCharAt(i, '1');
+        //         }
+        //         else{
+        //             and_s2.setCharAt(i, '0');
+        //         }
+        //     }
+        //     and_s1 = and_s2.toString();
+        //     int nand = Integer.parseInt(and_s1);
+        //     System.out.println(nand);
 
         //Test 2s complement
         // int b = 3;

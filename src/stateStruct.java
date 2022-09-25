@@ -95,31 +95,31 @@ public class stateStruct {
             switch (first3bits){
                 case "000": {
                     System.out.println("ADD Inst.");
-                    Rtype_add add = new Rtype_add(opcodeString);
+                    Rtype add = new Rtype(opcodeString,state);
                     instQueue.add(add);
                     break;
                 }
                 case "001": {
                     System.out.println("NAND Inst.");
-                    Rtype_nand nand = new Rtype_nand(opcodeString);
+                    Rtype nand = new Rtype(opcodeString,state);
                     instQueue.add(nand);
                     break;
                 }
                 case "010": {
                     System.out.println("LW Inst.");
-                    Itype_lw lw = new Itype_lw(opcodeString);
+                    Itype lw = new Itype(opcodeString,state);
                     instQueue.add(lw);
                     break;
                 }
                 case "011": {
                     System.out.println("SW Inst.");
-                    Itype_sw sw = new Itype_sw(opcodeString);
+                    Itype sw = new Itype(opcodeString);
                     instQueue.add(sw);
                     break;
                 }
                 case "100": {
                     System.out.println("BEQ Inst.");
-                    Itype_beq beq = new Itype_beq(opcodeString);
+                    Itype beq = new Itype(opcodeString);
                     instQueue.add(beq);
                     break;
                 }
