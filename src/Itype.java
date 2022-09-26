@@ -54,7 +54,7 @@ public class Itype {
          * ถ้า ค่าใน regA เท่ากับค่าใน regB ให้กระโดดไปที่ address PC+1+offsetField ซึ่ง PC คือ address ของ beq instruction
         */
         else{
-            if(regA == regB){
+            if(state.reg[regA] == state.reg[regB]){
                 state.pc = state.pc + offSet + 1;
             }
             else{
