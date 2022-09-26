@@ -2,10 +2,10 @@ package src;
 
 public class Itype {
 
-    int regA;
-    int regB;
-    int offSet;
-    String opcode;
+    private int regA;
+    private int regB;
+    private int offSet;
+    private String opcode;
     stateStruct state;
 
     Itype(String instruct,stateStruct state){

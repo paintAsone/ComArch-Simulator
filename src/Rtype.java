@@ -2,10 +2,10 @@ package src;
 
 public class Rtype {
 
-    int regA;
-    int regB;
-    int destReg;
-    String opcode;
+    private int regA;
+    private int regB;
+    private int destReg;
+    private String opcode;
     stateStruct state;
 
     Rtype(String instruct,stateStruct state){

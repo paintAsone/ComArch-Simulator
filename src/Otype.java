@@ -13,6 +13,9 @@ public class Otype {
     public void simulate(){
         if(opcode.equals("110")){ // halt
             state.pc++;
+            // System.out.println("machine halted");
+            // System.out.println("total of " + counter + " instructions executed");
+            // System.out.println("final state of machine:");
             state.printState();
 
         }
