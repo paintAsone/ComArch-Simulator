@@ -13,6 +13,8 @@ public class Otype {
     public void simulate(){
         if(opcode.equals("110")){ // halt
             state.pc++;
+            state.printState();
+
         }
 
         if(opcode.equals("111")){ // no-op
