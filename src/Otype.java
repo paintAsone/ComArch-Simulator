@@ -16,12 +16,13 @@ public class Otype {
             // System.out.println("machine halted");
             // System.out.println("total of " + counter + " instructions executed");
             // System.out.println("final state of machine:");
-            state.printState();
+            // state.printState();
 
         }
 
         if(opcode.equals("111")){ // no-op
             // no-op
+            state.pc++;
         }
     }
 }

@@ -9,11 +9,9 @@ public class Complement {
     }
 
     public int complement_2s(){
-        System.out.println("0 : " + offset.charAt(0));
 
         if(offset.charAt(0) == '0'){
             String s = offset.substring(2, 16);
-            System.out.println("s : " + s);
             return Integer.parseInt(s,2);
         }
 
@@ -28,7 +26,8 @@ public class Complement {
                     str.setCharAt(i, '0');
                 }
             }
-            return -Integer.parseInt(str.toString(),2);
+            int newOffset = Integer.parseInt(str.toString(),2) + 1;
+            return -newOffset;
         }
     }
 }

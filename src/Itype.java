@@ -28,7 +28,7 @@ public class Itype {
          * Load regB จาก memory และ memory address หาได้จากการเอา offsetField บวกกับค่าใน regA
         */
         if(opcode.equals("010")){
-            int address = offSet + regA;
+            int address = offSet + state.reg[regA];
             state.reg[regB] = state.mem[address];
             state.pc++;
         }
@@ -38,15 +38,15 @@ public class Itype {
          * Store regB ใน memory และ memory address หาได้จากการเอา offsetField บวกกับค่าใน regA
         */
         else if(opcode.equals("011")){
-            int address = offSet + regA;
-            System.out.println("add : "+ address);
+            int address = offSet + state.reg[regA];
+            // System.out.println("add : "+ address);
             if(state.numMemory < address+1){
                 state.numMemory = address+1;
             }
             state.mem[address] = state.reg[regB]; 
-            System.out.println("mem[7] : "+ state.mem[7]);
+            // System.out.println("mem[7] : "+ state.mem[7]);
             state.pc++;
-            System.out.println("numMem: "+ state.numMemory);
+            // System.out.println("numMem: "+ state.numMemory);
         }
 
         /* 

@@ -45,10 +45,10 @@ public class stateStruct {
         }
 
         //test เฉยๆ
-        reg[1] = 2;
-        reg[2] = 5;
+        // reg[1] = 2;
+        // reg[2] = 5;
 
-        simulate();
+        // simulate();
     }
 
     public void printState(){
