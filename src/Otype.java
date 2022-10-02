@@ -1,4 +1,4 @@
-package src;
+// package src;
 
 public class Otype {
     
@@ -12,6 +12,7 @@ public class Otype {
 
     public void simulate(){
         if(opcode.equals("110")){ // halt
+            state.printState();
             state.pc++;
             // System.out.println("machine halted");
             // System.out.println("total of " + counter + " instructions executed");
