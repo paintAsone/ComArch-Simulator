@@ -20,6 +20,7 @@ public class Jtype {
 
     public void simulate(){
         if(opcode.equals("101")){ // jalr
+            System.out.println("JALR");
             state.reg[regB] = state.pc+1;
             if(regA != regB){
                 state.pc = state.reg[regA];

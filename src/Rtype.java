@@ -26,6 +26,7 @@ public class Rtype {
          * บวกค่าใน regA ด้วยค่าใน regB และเอาไปเก็บใน destReg
          */
         if(opcode.equals("000")){
+            System.out.println("ADD");
             state.reg[destReg] = state.reg[regA] + state.reg[regB];
             //บรรทัดถัดไป = PC+1
             state.pc++;
@@ -37,6 +38,7 @@ public class Rtype {
          */
         else{
             // ค่าใน regA andกับ ค่าใน regB
+            System.out.println("NAND");
             int and = state.reg[regA] & state.reg[regB];
             String and_s1 = Integer.toBinaryString(and);
             StringBuilder and_s2 = new StringBuilder(and_s1);

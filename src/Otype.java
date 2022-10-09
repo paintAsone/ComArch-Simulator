@@ -12,6 +12,7 @@ public class Otype {
 
     public void simulate(){
         if(opcode.equals("110")){ // halt
+            System.out.println("HAULT");
             state.printState();
             state.pc++;
             // System.out.println("machine halted");
@@ -23,6 +24,7 @@ public class Otype {
 
         if(opcode.equals("111")){ // no-op
             // no-op
+            System.out.println("NO-OP");
             state.pc++;
         }
     }

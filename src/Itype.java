@@ -7,6 +7,7 @@ public class Itype {
     private int offSet;
     private String opcode;
     stateStruct state;
+    String filename = "result_multi.txt";
 
     Itype(String instruct,stateStruct state){
         String A = instruct.substring(3,6);
@@ -23,11 +24,14 @@ public class Itype {
 
     public void simulate(){
 
+        
+
         /* 
          * lw instruction(010)
          * Load regB จาก memory และ memory address หาได้จากการเอา offsetField บวกกับค่าใน regA
         */
         if(opcode.equals("010")){
+            System.out.println("LW");
             int address = offSet + state.reg[regA];
             state.reg[regB] = state.mem[address];
             state.pc++;
@@ -38,6 +42,7 @@ public class Itype {
          * Store regB ใน memory และ memory address หาได้จากการเอา offsetField บวกกับค่าใน regA
         */
         else if(opcode.equals("011")){
+            System.out.println("SW");
             int address = offSet + state.reg[regA];
             // System.out.println("add : "+ address);
             if(state.numMemory < address+1){
@@ -54,6 +59,7 @@ public class Itype {
          * ถ้า ค่าใน regA เท่ากับค่าใน regB ให้กระโดดไปที่ address PC+1+offsetField ซึ่ง PC คือ address ของ beq instruction
         */
         else{
+            System.out.println("BEQ");
             if(state.reg[regA] == state.reg[regB]){
                 state.pc = state.pc + offSet + 1;
             }

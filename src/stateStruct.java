@@ -25,7 +25,7 @@ public class stateStruct {
 
         /* read in the entire machine-code file into memory */
         try {
-            File myObj = new File("src/test.txt");
+            File myObj = new File("src/test_multi.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
               String data = myReader.nextLine();
