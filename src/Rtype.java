@@ -9,6 +9,7 @@ public class Rtype {
     stateStruct state;
 
     Rtype(String instruct,stateStruct state){
+        // แบ่ง instruction เพื่อหา regA regB destReg opcode
         String A = instruct.substring(3,6);
         String B = instruct.substring(6,9);
         String Dest = instruct.substring(22,25);
@@ -28,7 +29,6 @@ public class Rtype {
         if(opcode.equals("000")){
             System.out.println("ADD");
             state.reg[destReg] = state.reg[regA] + state.reg[regB];
-            //บรรทัดถัดไป = PC+1
             state.pc++;
         }
 
@@ -37,13 +37,9 @@ public class Rtype {
          * Nand ค่าใน regA ด้วยค่าใน regB และเอาค่าไปเก็บใน destReg
          */
         else{
-            // ค่าใน regA andกับ ค่าใน regB
-            System.out.println("NAND");
             int and = state.reg[regA] & state.reg[regB];
             String and_s1 = Integer.toBinaryString(and);
             StringBuilder and_s2 = new StringBuilder(and_s1);
-
-            // not ค่าที่ and มา
             for(int i=0; i<and_s2.length();i++){
                 if(and_s2.charAt(i) == '0'){
                     and_s2.setCharAt(i, '1');

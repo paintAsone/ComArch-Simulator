@@ -8,13 +8,19 @@ public class Complement {
         this.offset = offset;
     }
 
+    /*
+     * 2's Complement convert
+     * Binary to Decimal
+     */
     public int complement_2s(){
 
+        // Positive case
         if(offset.charAt(0) == '0'){
             String s = offset.substring(2, 16);
             return Integer.parseInt(s,2);
         }
 
+        // Negative case
         else{
             String s = offset.substring(2, 16);
             StringBuilder str = new StringBuilder(s);

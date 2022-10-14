@@ -1,21 +1,14 @@
 package src;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 public class main {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args){
 
         stateStruct state = new stateStruct();
-        
-        String fileName = "result_comb.txt";
-        //String fileName = "result_multi.txt";
-        FileWriter fileWriter = new FileWriter(fileName);
-        PrintWriter printWriter = new PrintWriter(fileWriter);
 
         boolean end = false;
         int counter = 0;
+
+        // simulate จนกว่าจะเจอคำสั่ง halt
         do{
             state.printState();
             int opcode = state.mem[state.pc];
@@ -36,52 +29,59 @@ public class main {
             String first3bits = opcodeBit[0]+opcodeBit[1]+opcodeBit[2];
 
             switch (first3bits){
+                // opcode = 000 
+                // add instruction
                 case "000": {
-                    printWriter.print("ADD \n");
                     Rtype add = new Rtype(opcodeString,state);
                     add.simulate();
-                    //instQueue.add(add);
                     break;
                 }
-                case "001": {
-                    printWriter.print("NAND \n");
+                // opcode = 001 
+                // and instruction
+                case "001": {                    
                     Rtype nand = new Rtype(opcodeString,state);
                     nand.simulate();
                     break;
                 }
+                // opcode = 010
+                // lw instruction
                 case "010": {
-                    printWriter.print("LW \n");
                     Itype lw = new Itype(opcodeString,state);
                     lw.simulate();
                     break;
                 }
+                // opcode = 011 
+                // sw instruction
                 case "011": {
-                    printWriter.print("SW \n");
                     Itype sw = new Itype(opcodeString,state);
                     sw.simulate();
                     break;
                 }
+                // opcode = 100 
+                // beq instruction
                 case "100": {
-                    printWriter.print("BEQ \n");
                     Itype beq = new Itype(opcodeString,state);
                     beq.simulate();
                     break;
                 }
+                // opcode = 101 
+                // jalr instruction
                 case "101": {
-                    printWriter.print("JALR \n");
                     Jtype jalr = new Jtype(opcodeString,state);
                     jalr.simulate();
                     break;
                 }
+                // opcode = 110 
+                // halt instruction
                 case "110": {
-                    printWriter.print("HAULT \n");
                     Otype hault = new Otype(opcodeString,state);
                     hault.simulate();
                     end = true;
                     break;
                 }
+                // opcode = 111 
+                // noop instruction
                 case "111": {
-                    printWriter.print("NO-OP \n");
                     Otype noop = new Otype(opcodeString,state);
                     noop.simulate();
                     break;
@@ -90,8 +90,6 @@ public class main {
         }  
         counter++;
         }while(!end);
-
-        printWriter.close();
 
         System.out.println("machine halted");
         System.out.println("total of " + counter + " instructions executed");
