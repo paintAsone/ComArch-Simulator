@@ -2,8 +2,6 @@ package src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
 public class stateStruct {
@@ -12,7 +10,8 @@ public class stateStruct {
     int[] reg = new int[8];
     int numMemory;
 
-    /*กำหนดค่า state เริ่มต้น 
+    /*
+     * กำหนดค่า state เริ่มต้น 
      * set pc = 0
      * read in the entire machine-code file into memory
      * initialize registers
@@ -29,7 +28,6 @@ public class stateStruct {
             while (myReader.hasNextLine()) {
               String data = myReader.nextLine();
               mem[numMemory] = Integer.parseInt(data);
-              System.out.println("memory["+numMemory+"]="+mem[numMemory]);
               numMemory++;
             }
             myReader.close();
@@ -45,6 +43,9 @@ public class stateStruct {
 
     }
 
+      /*
+      * printState function
+      */
     public void printState(){
         System.out.println("\n@@@\nstate:");
         System.out.println("\tpc " + pc);
