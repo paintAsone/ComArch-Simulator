@@ -19,8 +19,12 @@ public class Jtype {
     }
 
     public void simulate(){
-        if(opcode.equals("101")){ // jalr
-            System.out.println("JALR");
+        /* 
+         * jalr instruction(101)
+         * เก็บค่า PC+1 ไว้ใน regB ซึ่ง PC คือ address ของ jalr instruction และกระโดดไปที่ address ที่ถูกเก็บไว้ใน regA 
+         * แต่ถ้า regA และ regB คือ register ตัวเดียวกัน ให้เก็บ PC+1 ก่อน และค่อยกระโดดไปที่ PC+1
+        */
+        if(opcode.equals("101")){
             state.reg[regB] = state.pc+1;
             if(regA != regB){
                 state.pc = state.reg[regA];

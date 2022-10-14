@@ -11,19 +11,21 @@ public class Otype {
     }
 
     public void simulate(){
-        if(opcode.equals("110")){ // halt
+        /* 
+         * halt instruction(110)
+         * เพิ่มค่า PC เหมือน instructions อื่นๆ และ halt เครื่อง นั่นคือให้ simulator รู้ว่าเครื่องมีการ halted เกิดขึ้น
+        */
+        if(opcode.equals("110")){ 
             System.out.println("HAULT");
             state.printState();
             state.pc++;
-            // System.out.println("machine halted");
-            // System.out.println("total of " + counter + " instructions executed");
-            // System.out.println("final state of machine:");
-            // state.printState();
-
         }
 
-        if(opcode.equals("111")){ // no-op
-            // no-op
+        /* 
+         * noop instruction(111)
+         * เพิ่มค่า PC เหมือน instructions อื่นๆ และ ไม่ทำอะไรเลย
+        */
+        if(opcode.equals("111")){
             System.out.println("NO-OP");
             state.pc++;
         }
