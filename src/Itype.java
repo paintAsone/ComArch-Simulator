@@ -7,8 +7,7 @@ public class Itype {
     private int offSet;
     private String opcode;
     stateStruct state;
-    String filename = "result_multi.txt";
-
+    
     Itype(String instruct,stateStruct state){
         // แบ่ง instruction เพื่อหา regA regB destReg opcode
         String A = instruct.substring(3,6);
