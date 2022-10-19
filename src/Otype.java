@@ -13,20 +13,17 @@ public class Otype {
     public void simulate(){
         /* 
          * halt instruction(110)
-         * เพิ่มค่า PC เหมือน instructions อื่นๆ และ halt เครื่อง นั่นคือให้ simulator รู้ว่าเครื่องมีการ halted เกิดขึ้น
+         * PC = PC+1 like every instruction else, printState again and print out that machine is halting 
         */
         if(opcode.equals("110")){ 
-            System.out.println("HAULT");
-            state.printState();
             state.pc++;
         }
 
         /* 
-         * noop instruction(111)
-         * เพิ่มค่า PC เหมือน instructions อื่นๆ และ ไม่ทำอะไรเลย
+         * halt instruction(110)
+         * PC = PC+1 like every instruction else, printState again and print out that machine is halting 
         */
         if(opcode.equals("111")){
-            System.out.println("NO-OP");
             state.pc++;
         }
     }

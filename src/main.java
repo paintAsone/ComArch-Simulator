@@ -8,86 +8,91 @@ public class main {
         boolean end = false;
         int counter = 0;
 
-        // simulate จนกว่าจะเจอคำสั่ง halt
+        // simulate until halt
         do{
             state.printState();
-            int opcode = state.mem[state.pc];
-            // แปลง opcode base 10 > base 2
-            String opcodeString = Integer.toBinaryString(opcode);
+            int instructionDeci = state.mem[state.pc];
+            // convert opcode base 10 to base 2
+            String instruction = Integer.toBinaryString(instructionDeci);
 
-            // ต้องมี 25 ตัว คือ bit ที่ 24-0 ถ้าไม่ถึงให้เติม 0 ข้างหน้าให้ครบ
-            if(opcodeString.length() < 25){
-                int lengthofZero = 25-opcodeString.length();
-            for(int i = 0; i<lengthofZero; i++){
-                opcodeString = '0'+opcodeString;
+            // must have 25 bit, bit 24-0 should be all 0
+            if(instruction.length() < 25){
+                int lengthofZero = 25-instruction.length();
+                for(int i = 0; i<lengthofZero; i++){
+                    instruction = '0' + instruction;
+                }
             }
-        }
+
+            if(instruction.length() > 25){
+                System.out.print("Wrong Instruction at mem[" + state.pc + "]");
+                System.exit(0); 
+            }
            
-        // ถ้ามี 25 bit ครบ (bit ที่ 31-26 ไม่ใช้ *และควรเป็น 0)
-        if(opcodeString.length() == 25){
-            String[] opcodeBit = opcodeString.split("");
-            String first3bits = opcodeBit[0]+opcodeBit[1]+opcodeBit[2];
+            // if opcode already have 25 bits (we don't care about bit 31-26 and it should be all 0)
+            if(instruction.length() == 25){
+                String[] opcodeBit = instruction.split("");
+                String first3bits = opcodeBit[0]+opcodeBit[1]+opcodeBit[2];
 
-            switch (first3bits){
-                // opcode = 000 
-                // add instruction
-                case "000": {
-                    Rtype add = new Rtype(opcodeString,state);
-                    add.simulate();
-                    break;
+                switch (first3bits){
+                    // opcode = 000 
+                    // add instruction
+                    case "000": {
+                        Rtype add = new Rtype(instruction,state);
+                        add.simulate();
+                        break;
+                    }
+                    // opcode = 001 
+                    // and instruction
+                    case "001": {                    
+                        Rtype nand = new Rtype(instruction,state);
+                        nand.simulate();
+                        break;
+                    }
+                    // opcode = 010
+                    // lw instruction
+                    case "010": {
+                        Itype lw = new Itype(instruction,state);
+                        lw.simulate();
+                        break;
+                    }
+                    // opcode = 011 
+                    // sw instruction
+                    case "011": {
+                        Itype sw = new Itype(instruction,state);
+                        sw.simulate();
+                        break;
+                    }
+                    // opcode = 100 
+                    // beq instruction
+                    case "100": {
+                        Itype beq = new Itype(instruction,state);
+                        beq.simulate();
+                        break;
+                    }
+                    // opcode = 101 
+                    // jalr instruction
+                    case "101": {
+                        Jtype jalr = new Jtype(instruction,state);
+                        jalr.simulate();
+                        break;
+                    }
+                    // opcode = 110 
+                    // halt instruction
+                    case "110": {
+                        Otype hault = new Otype(instruction,state);
+                        hault.simulate();
+                        end = true;
+                        break;
+                    }
+                    // opcode = 111 
+                    // noop instruction
+                    case "111": {
+                        Otype noop = new Otype(instruction,state);
+                        noop.simulate();
+                        break;
+                    }
                 }
-                // opcode = 001 
-                // and instruction
-                case "001": {                    
-                    Rtype nand = new Rtype(opcodeString,state);
-                    nand.simulate();
-                    break;
-                }
-                // opcode = 010
-                // lw instruction
-                case "010": {
-                    Itype lw = new Itype(opcodeString,state);
-                    lw.simulate();
-                    break;
-                }
-                // opcode = 011 
-                // sw instruction
-                case "011": {
-                    Itype sw = new Itype(opcodeString,state);
-                    sw.simulate();
-                    break;
-                }
-                // opcode = 100 
-                // beq instruction
-                case "100": {
-                    Itype beq = new Itype(opcodeString,state);
-                    beq.simulate();
-                    break;
-                }
-                // opcode = 101 
-                // jalr instruction
-                case "101": {
-                    Jtype jalr = new Jtype(opcodeString,state);
-                    jalr.simulate();
-                    break;
-                }
-                // opcode = 110 
-                // halt instruction
-                case "110": {
-                    Otype hault = new Otype(opcodeString,state);
-                    hault.simulate();
-                    end = true;
-                    break;
-                }
-                // opcode = 111 
-                // noop instruction
-                case "111": {
-                    Otype noop = new Otype(opcodeString,state);
-                    noop.simulate();
-                    break;
-                }
-            }
-        }  
+            }  
         counter++;
         }while(!end);
 
