@@ -9,7 +9,7 @@ public class Rtype {
     stateStruct state;
 
     Rtype(String instruct,stateStruct state){
-        // แบ่ง instruction เพื่อหา regA regB destReg opcode
+        // split instruction into regA regB destReg opcode
         String A = instruct.substring(3,6);
         String B = instruct.substring(6,9);
         String Dest = instruct.substring(22,25);
@@ -23,18 +23,17 @@ public class Rtype {
 
     public void simulate(){
         /* 
-         * Add instruction
-         * บวกค่าใน regA ด้วยค่าใน regB และเอาไปเก็บใน destReg
+         * add instruction
+         * value in regA + value in regB and store the result in destReg
          */
         if(opcode.equals("000")){
-            System.out.println("ADD");
             state.reg[destReg] = state.reg[regA] + state.reg[regB];
             state.pc++;
         }
 
         /*
          * nand instruction
-         * Nand ค่าใน regA ด้วยค่าใน regB และเอาค่าไปเก็บใน destReg
+         * nand value in regA with value in regB and store the result in destReg
          */
         else{
             int and = state.reg[regA] & state.reg[regB];

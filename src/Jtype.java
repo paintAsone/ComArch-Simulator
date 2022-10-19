@@ -8,6 +8,7 @@ public class Jtype {
     stateStruct state;
 
     Jtype(String instruct,stateStruct state){
+        // split instruction into regA regB opcode
         String A = instruct.substring(3,6);
         String B = instruct.substring(6,9);
         opcode = instruct.substring(0,3);
@@ -19,10 +20,10 @@ public class Jtype {
     }
 
     public void simulate(){
-        /* 
+         /* 
          * jalr instruction(101)
-         * เก็บค่า PC+1 ไว้ใน regB ซึ่ง PC คือ address ของ jalr instruction และกระโดดไปที่ address ที่ถูกเก็บไว้ใน regA 
-         * แต่ถ้า regA และ regB คือ register ตัวเดียวกัน ให้เก็บ PC+1 ก่อน และค่อยกระโดดไปที่ PC+1
+         * store PC+1 in regB which PC is the address of jalr instruction and jump to address that store in regA 
+         * if regA and regB is the same register store PC+1  and then jump to PC+1
         */
         if(opcode.equals("101")){
             state.reg[regB] = state.pc+1;

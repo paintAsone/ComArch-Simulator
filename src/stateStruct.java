@@ -18,7 +18,7 @@ public class stateStruct {
      * numMemory = number of machine-code
     */
     stateStruct(){
-         /* เริ่มต้นค่า pc = 0 */
+         /* start with pc = 0 */
         pc = 0;
 
         /* read in the entire machine-code file into memory */

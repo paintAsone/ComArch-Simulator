@@ -9,7 +9,7 @@ public class Itype {
     stateStruct state;
     
     Itype(String instruct,stateStruct state){
-        // แบ่ง instruction เพื่อหา regA regB destReg opcode
+        // split instruction into regA regB offset opcode
         String A = instruct.substring(3,6);
         String B = instruct.substring(6,9);
         String field = instruct.substring(9,25);
@@ -26,7 +26,7 @@ public class Itype {
 
         /* 
          * lw instruction(010)
-         * Load regB จาก memory และ memory address หาได้จากการเอา offsetField บวกกับค่าใน regA
+         * Load regB from memory and memory address which is offsetField + value in regA
         */
         if(opcode.equals("010")){
             int address = offSet + state.reg[regA];
@@ -36,7 +36,7 @@ public class Itype {
 
         /* 
          * sw instruction(011)
-         * Store regB ใน memory และ memory address หาได้จากการเอา offsetField บวกกับค่าใน regA
+         * Store regB in memory and memory address which is offsetField + value in regA
         */
         else if(opcode.equals("011")){
             int address = offSet + state.reg[regA];
@@ -49,7 +49,7 @@ public class Itype {
 
         /* 
          * beq instruction (100)
-         * ถ้า ค่าใน regA เท่ากับค่าใน regB ให้กระโดดไปที่ address PC+1+offsetField ซึ่ง PC คือ address ของ beq instruction
+         * if value in regA = value in regB jump to address PC+1+offsetField which PC is the address of beq instruction
         */
         else{
             if(state.reg[regA] == state.reg[regB]){
