@@ -58,10 +58,10 @@ public class Rtype {
                 nand_St = new StringBuilder(bi_A);
                 for(int i=0; i<bi_A.length() ;i++){
                     if(bi_A.charAt(i) == '1' && bi_B.charAt(i)=='1'){
-                            nand_St.setCharAt(i, '1');
+                            nand_St.setCharAt(i, '0');
                         }
                         else{
-                            nand_St.setCharAt(i, '0');     
+                            nand_St.setCharAt(i, '1');     
                         }
                     }
 
