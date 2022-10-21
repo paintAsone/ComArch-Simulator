@@ -10,38 +10,37 @@ public class stateStruct {
     int[] reg = new int[8];
     int numMemory;
 
-    /*
-     * กำหนดค่า state เริ่มต้น 
+   /*
+     * set default value of state
      * set pc = 0
      * read in the entire machine-code file into memory
      * initialize registers
-     * numMemory = number of machine-code
+     * numMemory = number of memory
     */
     stateStruct(){
-         /* start with pc = 0 */
-        pc = 0;
+      /* start with pc = 0 */
+    pc = 0;
 
-        /* read in the entire machine-code file into memory */
-        try {
-            File myObj = new File("src/test.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-              String data = myReader.nextLine();
-              mem[numMemory] = Integer.parseInt(data);
-              numMemory++;
-            }
-            myReader.close();
-          } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-          }
+     /* read in the entire machine-code file (use .txt file) into memory */
+     try {
+         File myObj = new File("src/machine_code.txt");
+         Scanner myReader = new Scanner(myObj);
+         while (myReader.hasNextLine()) {
+           String data = myReader.nextLine();
+           mem[numMemory] = Integer.parseInt(data);
+           numMemory++;
+         }
+         myReader.close();
+       } catch (FileNotFoundException e) {
+         System.out.println("An error occurred.");
+         e.printStackTrace();
+       }
 
-        /* initialize registers */
-        for(int i = 0;i<8;i++){
-            reg[i] = 0;
-        }
-
-    }
+     /* initialize registers */
+     for(int i = 0;i<8;i++){
+         reg[i] = 0;
+     }
+ }
 
       /*
       * printState function

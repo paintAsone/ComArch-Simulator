@@ -8,6 +8,10 @@ public class main {
         boolean end = false;
         int counter = 0;
 
+        for(int i=0 ; i<state.numMemory ; i++){
+            System.out.println("mem["+i+"]=" + state.mem[i]);
+        }  
+
         // simulate until halt
         do{
             state.printState();
