@@ -48,7 +48,7 @@ public class Rtype {
                 }
             }
             and_s1 = and_s2.toString();
-            int nand = Integer.parseInt(and_s1);
+            int nand = Integer.parseInt(and_s1,2);
             state.reg[destReg] = nand;
             state.pc++;
         }
