@@ -36,19 +36,36 @@ public class Rtype {
          * nand value in regA with value in regB and store the result in destReg
          */
         else{
-            int and = state.reg[regA] & state.reg[regB];
-            String and_s1 = Integer.toBinaryString(and);
-            StringBuilder and_s2 = new StringBuilder(and_s1);
-            for(int i=0; i<and_s2.length();i++){
-                if(and_s2.charAt(i) == '0'){
-                    and_s2.setCharAt(i, '1');
-                }
-                else{
-                    and_s2.setCharAt(i, '0');
-                }
+        
+            String bi_A = Integer.toBinaryString(state.reg[regA]);
+            String bi_B = Integer.toBinaryString(state.reg[regB]);
+            StringBuilder nand_St = new StringBuilder();
+    
+            if(bi_A.length() > bi_B.length()){
+                int lengthofZero = bi_A.length() - bi_B.length();
+                    for(int i = 0; i<lengthofZero; i++){
+                        bi_B = '0' + bi_B;
+                    }
             }
-            and_s1 = and_s2.toString();
-            int nand = Integer.parseInt(and_s1);
+            
+            if(bi_A.length() < bi_B.length()){
+                int lengthofZero = bi_B.length() - bi_A.length();
+                    for(int i = 0; i<lengthofZero; i++){
+                        bi_A = '0' + bi_A;
+                    }
+            }
+    
+                nand_St = new StringBuilder(bi_A);
+                for(int i=0; i<bi_A.length() ;i++){
+                    if(bi_A.charAt(i) == '1' && bi_B.charAt(i)=='1'){
+                            nand_St.setCharAt(i, '1');
+                        }
+                        else{
+                            nand_St.setCharAt(i, '0');     
+                        }
+                    }
+
+            int nand = Integer.parseInt(nand_St.toString(),2);
             state.reg[destReg] = nand;
             state.pc++;
         }
